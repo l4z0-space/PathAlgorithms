@@ -1,0 +1,10 @@
+C:\Users\Lazaron Shyta\source\repos\PathAlgorithms\bin\Debug\PathAlgorithms.exe.config
+C:\Users\Lazaron Shyta\source\repos\PathAlgorithms\bin\Debug\PathAlgorithms.exe
+C:\Users\Lazaron Shyta\source\repos\PathAlgorithms\bin\Debug\PathAlgorithms.pdb
+C:\Users\Lazaron Shyta\source\repos\PathAlgorithms\obj\Debug\PathAlgorithms.csprojAssemblyReference.cache
+C:\Users\Lazaron Shyta\source\repos\PathAlgorithms\obj\Debug\PathAlgorithms.Form1.resources
+C:\Users\Lazaron Shyta\source\repos\PathAlgorithms\obj\Debug\PathAlgorithms.Properties.Resources.resources
+C:\Users\Lazaron Shyta\source\repos\PathAlgorithms\obj\Debug\PathAlgorithms.csproj.GenerateResource.cache
+C:\Users\Lazaron Shyta\source\repos\PathAlgorithms\obj\Debug\PathAlgorithms.csproj.CoreCompileInputs.cache
+C:\Users\Lazaron Shyta\source\repos\PathAlgorithms\obj\Debug\PathAlgorithms.exe
+C:\Users\Lazaron Shyta\source\repos\PathAlgorithms\obj\Debug\PathAlgorithms.pdb
