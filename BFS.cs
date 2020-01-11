@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace PathAlgorithms
 {
     
-
+    
     class BFS
     {
 
@@ -39,6 +39,7 @@ namespace PathAlgorithms
         List<int> wallY = new List<int>();
 
         int[,] table = new int[50, 50]; // table
+        List<Tuple<int, int>> toReturn = new List<Tuple<int, int>>();
         #endregion
 
 
@@ -60,9 +61,9 @@ namespace PathAlgorithms
 
         }
 
-        public List<Tuple<int,int>> performBFS()
+        public List<Tuple<int,int>> get_BFS_path()
         {
-            List<Tuple<int, int>> toReturn= new List<Tuple<int,int>>();
+           
             var queue = new Queue<Tuple<int, int, int>>(); // generic queue declaration
           
             queue.Enqueue(Tuple.Create(startX, startY, 0));  // insert the starting point

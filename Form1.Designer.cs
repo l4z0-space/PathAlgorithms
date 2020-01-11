@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.upPanel = new System.Windows.Forms.Panel();
+            this.select = new System.Windows.Forms.Button();
+            this.runBFS = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
             this.board = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,21 +43,42 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.runBFS = new System.Windows.Forms.Button();
-            this.select = new System.Windows.Forms.Button();
+            this.runDFS = new System.Windows.Forms.Button();
             this.upPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.board)).BeginInit();
             this.SuspendLayout();
             // 
             // upPanel
             // 
+            this.upPanel.Controls.Add(this.runDFS);
             this.upPanel.Controls.Add(this.select);
             this.upPanel.Controls.Add(this.runBFS);
             this.upPanel.Controls.Add(this.closeButton);
             this.upPanel.Location = new System.Drawing.Point(-1, 0);
             this.upPanel.Name = "upPanel";
-            this.upPanel.Size = new System.Drawing.Size(730, 24);
+            this.upPanel.Size = new System.Drawing.Size(730, 49);
             this.upPanel.TabIndex = 0;
+            // 
+            // select
+            // 
+            this.select.Location = new System.Drawing.Point(193, 0);
+            this.select.Name = "select";
+            this.select.Size = new System.Drawing.Size(87, 46);
+            this.select.TabIndex = 2;
+            this.select.Text = "Build Wall";
+            this.select.UseVisualStyleBackColor = true;
+            this.select.Click += new System.EventHandler(this.Select_Click);
+            // 
+            // runBFS
+            // 
+            this.runBFS.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.runBFS.Location = new System.Drawing.Point(413, 0);
+            this.runBFS.Name = "runBFS";
+            this.runBFS.Size = new System.Drawing.Size(79, 46);
+            this.runBFS.TabIndex = 1;
+            this.runBFS.Text = "BFS";
+            this.runBFS.UseVisualStyleBackColor = false;
+            this.runBFS.Click += new System.EventHandler(this.RunBFS_Click);
             // 
             // closeButton
             // 
@@ -63,7 +86,7 @@
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.Location = new System.Drawing.Point(655, 1);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(75, 23);
+            this.closeButton.Size = new System.Drawing.Size(72, 45);
             this.closeButton.TabIndex = 0;
             this.closeButton.Text = "x";
             this.closeButton.UseVisualStyleBackColor = true;
@@ -84,12 +107,12 @@
             this.Column8,
             this.Column9,
             this.Column10});
-            this.board.Location = new System.Drawing.Point(-1, 21);
+            this.board.Location = new System.Drawing.Point(-1, 52);
             this.board.Name = "board";
             this.board.RowHeadersVisible = false;
             this.board.RowHeadersWidth = 51;
             this.board.RowTemplate.Height = 24;
-            this.board.Size = new System.Drawing.Size(730, 607);
+            this.board.Size = new System.Drawing.Size(730, 600);
             this.board.TabIndex = 1;
             // 
             // Column1
@@ -162,32 +185,22 @@
             this.Column10.Name = "Column10";
             this.Column10.Width = 125;
             // 
-            // runBFS
+            // runDFS
             // 
-            this.runBFS.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.runBFS.Location = new System.Drawing.Point(331, 0);
-            this.runBFS.Name = "runBFS";
-            this.runBFS.Size = new System.Drawing.Size(79, 24);
-            this.runBFS.TabIndex = 1;
-            this.runBFS.Text = "BFS";
-            this.runBFS.UseVisualStyleBackColor = false;
-            this.runBFS.Click += new System.EventHandler(this.RunBFS_Click);
-            // 
-            // select
-            // 
-            this.select.Location = new System.Drawing.Point(205, 0);
-            this.select.Name = "select";
-            this.select.Size = new System.Drawing.Size(75, 21);
-            this.select.TabIndex = 2;
-            this.select.Text = "select";
-            this.select.UseVisualStyleBackColor = true;
-            this.select.Click += new System.EventHandler(this.Select_Click);
+            this.runDFS.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.runDFS.Location = new System.Drawing.Point(493, 0);
+            this.runDFS.Name = "runDFS";
+            this.runDFS.Size = new System.Drawing.Size(79, 46);
+            this.runDFS.TabIndex = 3;
+            this.runDFS.Text = "DFS";
+            this.runDFS.UseVisualStyleBackColor = false;
+            this.runDFS.Click += new System.EventHandler(this.RunDFS_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 627);
+            this.ClientSize = new System.Drawing.Size(728, 651);
             this.Controls.Add(this.board);
             this.Controls.Add(this.upPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -216,6 +229,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.Button runBFS;
         private System.Windows.Forms.Button select;
+        private System.Windows.Forms.Button runDFS;
     }
 }
 

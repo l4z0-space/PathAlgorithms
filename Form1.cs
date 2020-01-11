@@ -84,36 +84,32 @@ namespace PathAlgorithms
                         // MessageBox.Show(i.ToString() + " : " + j.ToString());
                         xWalls.Add(i);
                         yWalls.Add(j);
-                        board[i, j].Style.BackColor = Color.Red;
+                       // board[i, j].Style.BackColor = Color.Red;
                     }
+
+                    if (board[i, j].Selected)
+                    {
+                        // MessageBox.Show(i.ToString() + " : " + j.ToString());
+                        board[i, j].Selected = false;
+                    }
+
                 }
             }
             return Tuple.Create(xWalls, yWalls);
         }
 
-        private void RunBFS_Click(object sender, EventArgs e)
+        
+
+        void ColorTheBoard(List<Tuple<int, int>> path)
         {
-          
-            List<int> xWalls = new List<int>();
-            List<int> yWalls = new List<int>();
-
-            Tuple<List<int>, List<int>> walls = BuildWalls();  // calls the BuildWalls method
-
-            xWalls = walls.Item1;
-            yWalls = walls.Item2;
-
-            BFS bfs = new BFS(0, 0, 6, 8, 9, 9, xWalls, yWalls); // create BFS object
-
-            List<Tuple<int,int>> path = bfs.performBFS();   // run BFS get the cells traversed in BFS order
-            //MessageBox.Show(path.Count.ToString());
-
-            foreach(Tuple<int,int> x in path)
+            foreach (Tuple<int, int> x in path)
             {
                 wait(100);
                 int xx = x.Item1;
                 int yy = x.Item2;
 
-                if (xx == 6 && yy == 8) {
+                if (xx == 6 && yy == 8)
+                {
                     board[xx, yy].Style.BackColor = Color.Green;
                     board[xx, yy].Value = "ok!";
                     break;
@@ -121,8 +117,6 @@ namespace PathAlgorithms
                 else board[xx, yy].Style.BackColor = Color.Yellow;
 
             }
-            
-
         }
 
         private void Select_Click(object sender, EventArgs e)
@@ -142,6 +136,44 @@ namespace PathAlgorithms
                 }
             }
 
+        }
+
+        private void RunBFS_Click(object sender, EventArgs e)
+        {
+            List<int> xWalls = new List<int>();
+            List<int> yWalls = new List<int>();
+
+            Tuple<List<int>, List<int>> walls = BuildWalls();  // calls the BuildWalls method
+
+            xWalls = walls.Item1;
+            yWalls = walls.Item2;
+
+            BFS bfs = new BFS(0, 0, 6, 8, 9, 9, xWalls, yWalls); // create BFS object
+
+            List<Tuple<int, int>> path = bfs.get_BFS_path();   // run BFS get the cells traversed in BFS order
+            //MessageBox.Show(path.Count.ToString());
+
+            ColorTheBoard(path); // colors the board
+
+        }
+
+        private void RunDFS_Click(object sender, EventArgs e)
+        {
+
+            List<int> xWalls = new List<int>();
+            List<int> yWalls = new List<int>();
+
+            Tuple<List<int>, List<int>> walls = BuildWalls();  // calls the BuildWalls method
+
+            xWalls = walls.Item1;
+            yWalls = walls.Item2;
+
+            DFS dfs = new DFS(0, 0, 6, 8, 9, 9, xWalls, yWalls); // create BFS object
+
+            List<Tuple<int, int>> path = dfs.get_DFS_path();  // run DFS get the cells traversed in BFS order
+            //MessageBox.Show(path.Count.ToString());
+
+            ColorTheBoard(path); // colors the board
         }
     }
 }
