@@ -50,7 +50,7 @@ namespace PathAlgorithms
                     table[i, j] = 0;// all cells to 0
                 }
             }
-
+             
             for (int i = 0; i < wallX.Count; i++)
             {
                 table[wallX[i], wallY[i]] = 1;  // build the wall
@@ -58,28 +58,33 @@ namespace PathAlgorithms
 
         }
 
+       
         public void performDFS(Tuple<int,int,int> currentCell)
         {
+            int currX, currY;
 
             Tuple<int, int> toAppend = Tuple.Create(currentCell.Item1, currentCell.Item2);
-            if (toAppend.Item1 < 0 || toAppend.Item2 < 0 ||
-                toAppend.Item1 >= width || toAppend.Item2 >= height || table[toAppend.Item1,toAppend.Item2]==1)
-                return;
+            currX = toAppend.Item1;
+            currY = toAppend.Item2;
+            if (currX< 0 || currY < 0 || currX >= width || currY >= height || table[currX,currY]==1) // check if cell available
+                return; // if not then stop
 
-            table[toAppend.Item1, toAppend.Item2] = 1;
+            // otherwise continue...
+
+            table[currX, currY] = 1; // mark as visited
             toReturn.Add(toAppend);
-            if (toAppend.Item1 == endX && toAppend.Item2 == endY)
+            if (currX == endX && currY == endY)
             {
-                MessageBox.Show(currentCell.Item3.ToString() + " steps");
+                MessageBox.Show(currentCell.Item3.ToString() + " steps"); // number of steps
                 return;
             }
 
-            for(int i = 0; i < 8; i++)
+            for(int i = 0; i < 8; i++)  // explore the neighbour cells
             {
-                int nextX = toAppend.Item1 + d1[i];
-                int nextY = toAppend.Item2 + d2[i];
+                int nextX = currX + d1[i];
+                int nextY = currY + d2[i];
 
-                performDFS(Tuple.Create(nextX, nextY, currentCell.Item3 + 1));
+                performDFS(Tuple.Create(nextX, nextY, currentCell.Item3 + 1)); // go to cell
             }
                  
         }

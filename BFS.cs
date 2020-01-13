@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace PathAlgorithms
 {
-    
+                                 
     
     class BFS
     {
@@ -67,6 +67,8 @@ namespace PathAlgorithms
             var queue = new Queue<Tuple<int, int, int>>(); // generic queue declaration
           
             queue.Enqueue(Tuple.Create(startX, startY, 0));  // insert the starting point
+
+            
 
             while (queue.Count != 0)  // while still elements in queue
             {
