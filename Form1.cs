@@ -106,12 +106,16 @@ namespace PathAlgorithms
             var color2 = Color.Green;
            
             if (clr == true) toColor = color2;
-          
+            int iterator = 0;
             foreach (Tuple<int, int> x in path)
             {
                 wait(100);
                 int xx = x.Item1;
                 int yy = x.Item2;
+                if (clr == true)
+                {
+                    board[xx, yy].Value = iterator;
+                }
 
                 if (xx == 6 && yy == 8)
                 {
@@ -121,6 +125,7 @@ namespace PathAlgorithms
                 }
                 else board[xx, yy].Style.BackColor = toColor;
 
+                iterator++;
             }
         }
 
@@ -184,6 +189,21 @@ namespace PathAlgorithms
             //MessageBox.Show(path.Count.ToString());
 
             ColorTheBoard(path,false); // colors the board
+        }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            int height_SZ = board.Rows.Count;
+            int width_SZ = board.Columns.Count;
+
+            for (int i = 0; i < width_SZ; i++)
+            {
+                for (int j = 0; j < height_SZ; j++)
+                {
+                    board[i, j].Style.BackColor = Color.Black;
+                    board[i, j].Value = "";
+                }
+            }
         }
     }
 }

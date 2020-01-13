@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.upPanel = new System.Windows.Forms.Panel();
+            this.runDFS = new System.Windows.Forms.Button();
             this.select = new System.Windows.Forms.Button();
             this.runBFS = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
@@ -43,13 +44,14 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.runDFS = new System.Windows.Forms.Button();
+            this.clear = new System.Windows.Forms.Button();
             this.upPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.board)).BeginInit();
             this.SuspendLayout();
             // 
             // upPanel
             // 
+            this.upPanel.Controls.Add(this.clear);
             this.upPanel.Controls.Add(this.runDFS);
             this.upPanel.Controls.Add(this.select);
             this.upPanel.Controls.Add(this.runBFS);
@@ -58,6 +60,17 @@
             this.upPanel.Name = "upPanel";
             this.upPanel.Size = new System.Drawing.Size(730, 49);
             this.upPanel.TabIndex = 0;
+            // 
+            // runDFS
+            // 
+            this.runDFS.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.runDFS.Location = new System.Drawing.Point(493, 0);
+            this.runDFS.Name = "runDFS";
+            this.runDFS.Size = new System.Drawing.Size(79, 46);
+            this.runDFS.TabIndex = 3;
+            this.runDFS.Text = "DFS";
+            this.runDFS.UseVisualStyleBackColor = false;
+            this.runDFS.Click += new System.EventHandler(this.RunDFS_Click);
             // 
             // select
             // 
@@ -185,16 +198,16 @@
             this.Column10.Name = "Column10";
             this.Column10.Width = 125;
             // 
-            // runDFS
+            // clear
             // 
-            this.runDFS.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.runDFS.Location = new System.Drawing.Point(493, 0);
-            this.runDFS.Name = "runDFS";
-            this.runDFS.Size = new System.Drawing.Size(79, 46);
-            this.runDFS.TabIndex = 3;
-            this.runDFS.Text = "DFS";
-            this.runDFS.UseVisualStyleBackColor = false;
-            this.runDFS.Click += new System.EventHandler(this.RunDFS_Click);
+            this.clear.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.clear.Location = new System.Drawing.Point(13, 0);
+            this.clear.Name = "clear";
+            this.clear.Size = new System.Drawing.Size(79, 46);
+            this.clear.TabIndex = 4;
+            this.clear.Text = "CLEAR";
+            this.clear.UseVisualStyleBackColor = false;
+            this.clear.Click += new System.EventHandler(this.Clear_Click);
             // 
             // Form1
             // 
@@ -230,6 +243,7 @@
         private System.Windows.Forms.Button runBFS;
         private System.Windows.Forms.Button select;
         private System.Windows.Forms.Button runDFS;
+        private System.Windows.Forms.Button clear;
     }
 }
 

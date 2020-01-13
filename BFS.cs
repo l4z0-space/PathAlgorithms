@@ -69,11 +69,12 @@ namespace PathAlgorithms
         public void prepare_shortest_Path(Tuple<int, int> current)
         {
           //  Tuple<int,int> start = Tuple.Create(startX, startY);
-            Tuple<int, int> start = Tuple.Create(startX, startY);
-          //  MessageBox.Show(current.Item1.ToString() + " " + current.Item2.ToString());
+            MessageBox.Show(current.Item1.ToString() + " " + current.Item2.ToString());
             shortestPath.Add(current);
-
-            if (current.Item1 == start.Item1 && current.Item2 == current.Item2)
+            
+            
+            
+            if (current.Item1 == 0 && current.Item2 == 0)
 
                 return;
 
@@ -125,8 +126,7 @@ namespace PathAlgorithms
                             toReturn.Add(Tuple.Create(nextX, nextY)); // insert in the path to be colored (not the shortest path)
                             
                         }
-                    }
-
+                    } 
                 }
             }
             prepare_shortest_Path(Tuple.Create(endX, endY));

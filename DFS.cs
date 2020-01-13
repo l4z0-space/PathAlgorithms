@@ -62,11 +62,12 @@ namespace PathAlgorithms
         public void performDFS(Tuple<int,int,int> currentCell)
         {
             int currX, currY;
-
-            Tuple<int, int> toAppend = Tuple.Create(currentCell.Item1, currentCell.Item2);
-            currX = toAppend.Item1;
-            currY = toAppend.Item2;
-            if (currX< 0 || currY < 0 || currX >= width || currY >= height || table[currX,currY]==1) // check if cell available
+            currX = currentCell.Item1;
+            currY = currentCell.Item2;
+           
+            Tuple<int, int> toAppend = Tuple.Create(currX,currY);
+            
+            if (currX < 0 || currY < 0 || currX >= width || currY >= height || table[currX,currY]==1) // check if cell available
                 return; // if not then stop
 
             // otherwise continue...
@@ -79,7 +80,7 @@ namespace PathAlgorithms
                 return;
             }
 
-            for(int i = 0; i < 8; i++)  // explore the neighbour cells
+            for(int i = 0; i < 8; i++)  // explore the neighbour cellsC:\Users\Lazaron Shyta\source\repos\PathAlgorithms\DFS.cs
             {
                 int nextX = currX + d1[i];
                 int nextY = currY + d2[i];
