@@ -100,8 +100,13 @@ namespace PathAlgorithms
 
         
 
-        void ColorTheBoard(List<Tuple<int, int>> path)
+        void ColorTheBoard(List<Tuple<int, int>> path, bool clr)
         {
+            var toColor = Color.Yellow;
+            var color2 = Color.Green;
+           
+            if (clr == true) toColor = color2;
+          
             foreach (Tuple<int, int> x in path)
             {
                 wait(100);
@@ -110,11 +115,11 @@ namespace PathAlgorithms
 
                 if (xx == 6 && yy == 8)
                 {
-                    board[xx, yy].Style.BackColor = Color.Green;
+                    board[xx, yy].Style.BackColor = toColor;
                     board[xx, yy].Value = "ok!";
                     break;
                 }
-                else board[xx, yy].Style.BackColor = Color.Yellow;
+                else board[xx, yy].Style.BackColor = toColor;
 
             }
         }
@@ -123,7 +128,7 @@ namespace PathAlgorithms
         {
             int height_SZ = board.Rows.Count;
             int width_SZ = board.Columns.Count;
-     
+            
 
             for (int i = 0; i < width_SZ; i++)
             {
@@ -132,10 +137,9 @@ namespace PathAlgorithms
                     if (board[i, j].Selected) {
                       
                         board[i, j].Style.BackColor = Color.Red;
-                       }
+                    }
                 }
             }
-
         }
 
         private void RunBFS_Click(object sender, EventArgs e)
@@ -149,11 +153,17 @@ namespace PathAlgorithms
             yWalls = walls.Item2;
 
             BFS bfs = new BFS(0, 0, 6, 8, 9, 9, xWalls, yWalls); // create BFS object
-
-            List<Tuple<int, int>> path = bfs.get_BFS_path();   // run BFS get the cells traversed in BFS order
+            Tuple<List<Tuple<int, int>>, List<Tuple<int, int>>> paths = bfs.get_BFS_path(); // run BFS and get the paths (traversal and shortest)
+            List<Tuple<int, int>> path = paths.Item1;
+            List<Tuple<int, int>> shortestPath = paths.Item2;
             //MessageBox.Show(path.Count.ToString());
 
-            ColorTheBoard(path); // colors the board
+            ColorTheBoard(path, false); // colors the board
+
+            MessageBox.Show("Now showing the shortest path...");
+
+            ColorTheBoard(shortestPath, true);
+
 
         }
 
@@ -173,7 +183,7 @@ namespace PathAlgorithms
             List<Tuple<int, int>> path = dfs.get_DFS_path();  // run DFS get the cells traversed in BFS order
             //MessageBox.Show(path.Count.ToString());
 
-            ColorTheBoard(path); // colors the board
+            ColorTheBoard(path,false); // colors the board
         }
     }
 }

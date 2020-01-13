@@ -40,6 +40,11 @@ namespace PathAlgorithms
 
         int[,] table = new int[50, 50]; // table
         List<Tuple<int, int>> toReturn = new List<Tuple<int, int>>();
+        List<Tuple<int, int>> shortestPath = new List<Tuple<int, int>>();
+        Dictionary<Tuple<int, int>, Tuple<int, int>> Path = new Dictionary<Tuple<int,int>, Tuple<int,int>>();
+
+
+
         #endregion
 
 
@@ -61,14 +66,33 @@ namespace PathAlgorithms
 
         }
 
-        public List<Tuple<int,int>> get_BFS_path()
+        public void prepare_shortest_Path(Tuple<int, int> current)
+        {
+          //  Tuple<int,int> start = Tuple.Create(startX, startY);
+            Tuple<int, int> start = Tuple.Create(startX, startY);
+          //  MessageBox.Show(current.Item1.ToString() + " " + current.Item2.ToString());
+            shortestPath.Add(current);
+
+            if (current.Item1 == start.Item1 && current.Item2 == current.Item2)
+
+                return;
+
+            else prepare_shortest_Path(Path[current]); ;
+
+        }
+
+        public List<Tuple<int, int>> get_shortest_Path()
+        {
+            shortestPath.Reverse();
+            MessageBox.Show(shortestPath.Count.ToString());
+            return shortestPath;
+        }
+
+        public Tuple<List<Tuple<int,int>>,List<Tuple<int,int>>> get_BFS_path()
         {
            
             var queue = new Queue<Tuple<int, int, int>>(); // generic queue declaration
-          
             queue.Enqueue(Tuple.Create(startX, startY, 0));  // insert the starting point
-
-            
 
             while (queue.Count != 0)  // while still elements in queue
             {
@@ -94,20 +118,22 @@ namespace PathAlgorithms
                         // check if visited before
                         if (table[nextX, nextY] == 0)
                         {
-                            table[nextX, nextY] = 1;
-                         //   Visited[Tuple.Create(nextX, nextY)] = true; // mark as visited
+                            table[nextX, nextY] = 1; // mark as visited
+                                           
                             queue.Enqueue(Tuple.Create(nextX, nextY, curr.Item3+1));  // insert into queue
-                            toReturn.Add(Tuple.Create(nextX, nextY));
+                            Path[Tuple.Create(nextX, nextY)] = Tuple.Create(curr.Item1, curr.Item2);
+                            toReturn.Add(Tuple.Create(nextX, nextY)); // insert in the path to be colored (not the shortest path)
                             
                         }
                     }
+
                 }
             }
-            #endregion
-
-
-            return toReturn;
+            prepare_shortest_Path(Tuple.Create(endX, endY));
+            return Tuple.Create(toReturn,get_shortest_Path());
+            
         }
+        #endregion 
 
 
     }
