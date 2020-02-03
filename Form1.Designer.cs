@@ -128,6 +128,10 @@
             // 
             // board
             // 
+            this.board.AllowUserToAddRows = false;
+            this.board.AllowUserToDeleteRows = false;
+            this.board.AllowUserToResizeColumns = false;
+            this.board.AllowUserToResizeRows = false;
             this.board.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.board.ColumnHeadersVisible = false;
             this.board.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

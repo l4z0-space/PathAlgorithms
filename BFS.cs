@@ -68,10 +68,10 @@ namespace PathAlgorithms
 
         public void prepare_shortest_Path(Tuple<int, int> current)
         {
-            //MessageBox.Show(current.Item1.ToString() + " " + current.Item2.ToString());
+            /*  Recursively generates the shortest path (which was prepared while BFS)  */
             shortestPath.Add(current);
 
-            if (current.Item1 == 0 && current.Item2 == 0)
+            if (current.Item1 == startX && current.Item2 == startY)
                 return;
             else prepare_shortest_Path(Path[current]); ;
         }
@@ -79,7 +79,7 @@ namespace PathAlgorithms
         public List<Tuple<int, int>> get_shortest_Path()
         {
             shortestPath.Reverse();
-            MessageBox.Show(shortestPath.Count.ToString());
+            /* [DEBUG] MessageBox.Show(shortestPath.Count.ToString()); */
             return shortestPath;
         }
 
@@ -88,7 +88,7 @@ namespace PathAlgorithms
            
             var queue = new Queue<Tuple<int, int, int>>(); // generic queue declaration
             queue.Enqueue(Tuple.Create(startX, startY, 0));  // insert the starting point
-
+            bool found = false;
             while (queue.Count != 0)  // while still elements in queue
             {
                 var curr = queue.Dequeue(); // get the next element and pop it out the queue
@@ -98,6 +98,7 @@ namespace PathAlgorithms
                 if (curr.Item1 == endX && curr.Item2 == endY) // if the target found break
                 {
                     MessageBox.Show(curr.Item3.ToString()+" steps");
+                    found = true;
                     break;
                 }
 
@@ -123,7 +124,7 @@ namespace PathAlgorithms
                     } 
                 }
             }
-            prepare_shortest_Path(Tuple.Create(endX, endY));
+            if(found==true) prepare_shortest_Path(Tuple.Create(endX, endY));
             return Tuple.Create(toReturn,get_shortest_Path());
         }
         #endregion
