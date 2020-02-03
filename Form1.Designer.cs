@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.upPanel = new System.Windows.Forms.Panel();
+            this.clear = new System.Windows.Forms.Button();
             this.runDFS = new System.Windows.Forms.Button();
             this.select = new System.Windows.Forms.Button();
             this.runBFS = new System.Windows.Forms.Button();
@@ -44,7 +45,16 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clear = new System.Windows.Forms.Button();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.upPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.board)).BeginInit();
             this.SuspendLayout();
@@ -60,6 +70,17 @@
             this.upPanel.Name = "upPanel";
             this.upPanel.Size = new System.Drawing.Size(730, 49);
             this.upPanel.TabIndex = 0;
+            // 
+            // clear
+            // 
+            this.clear.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.clear.Location = new System.Drawing.Point(13, 0);
+            this.clear.Name = "clear";
+            this.clear.Size = new System.Drawing.Size(79, 46);
+            this.clear.TabIndex = 4;
+            this.clear.Text = "CLEAR";
+            this.clear.UseVisualStyleBackColor = false;
+            this.clear.Click += new System.EventHandler(this.Clear_Click);
             // 
             // runDFS
             // 
@@ -119,7 +140,17 @@
             this.Column7,
             this.Column8,
             this.Column9,
-            this.Column10});
+            this.Column10,
+            this.Column11,
+            this.Column12,
+            this.Column13,
+            this.Column14,
+            this.Column15,
+            this.Column16,
+            this.Column20,
+            this.Column17,
+            this.Column18,
+            this.Column19});
             this.board.Location = new System.Drawing.Point(-1, 52);
             this.board.Name = "board";
             this.board.RowHeadersVisible = false;
@@ -198,16 +229,75 @@
             this.Column10.Name = "Column10";
             this.Column10.Width = 125;
             // 
-            // clear
+            // Column11
             // 
-            this.clear.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.clear.Location = new System.Drawing.Point(13, 0);
-            this.clear.Name = "clear";
-            this.clear.Size = new System.Drawing.Size(79, 46);
-            this.clear.TabIndex = 4;
-            this.clear.Text = "CLEAR";
-            this.clear.UseVisualStyleBackColor = false;
-            this.clear.Click += new System.EventHandler(this.Clear_Click);
+            this.Column11.HeaderText = "Column11";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 125;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Column12";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            this.Column12.Width = 125;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Column13";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.Width = 125;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Column14";
+            this.Column14.MinimumWidth = 6;
+            this.Column14.Name = "Column14";
+            this.Column14.Width = 125;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "Column15";
+            this.Column15.MinimumWidth = 6;
+            this.Column15.Name = "Column15";
+            this.Column15.Width = 125;
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "Column16";
+            this.Column16.MinimumWidth = 6;
+            this.Column16.Name = "Column16";
+            this.Column16.Width = 125;
+            // 
+            // Column20
+            // 
+            this.Column20.HeaderText = "Column20";
+            this.Column20.MinimumWidth = 6;
+            this.Column20.Name = "Column20";
+            this.Column20.Width = 125;
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "Column17";
+            this.Column17.MinimumWidth = 6;
+            this.Column17.Name = "Column17";
+            this.Column17.Width = 125;
+            // 
+            // Column18
+            // 
+            this.Column18.HeaderText = "Column18";
+            this.Column18.MinimumWidth = 6;
+            this.Column18.Name = "Column18";
+            this.Column18.Width = 125;
+            // 
+            // Column19
+            // 
+            this.Column19.HeaderText = "Column19";
+            this.Column19.MinimumWidth = 6;
+            this.Column19.Name = "Column19";
+            this.Column19.Width = 125;
             // 
             // Form1
             // 
@@ -230,6 +320,10 @@
         private System.Windows.Forms.Panel upPanel;
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.DataGridView board;
+        private System.Windows.Forms.Button runBFS;
+        private System.Windows.Forms.Button select;
+        private System.Windows.Forms.Button runDFS;
+        private System.Windows.Forms.Button clear;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -240,10 +334,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.Button runBFS;
-        private System.Windows.Forms.Button select;
-        private System.Windows.Forms.Button runDFS;
-        private System.Windows.Forms.Button clear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
     }
 }
 
