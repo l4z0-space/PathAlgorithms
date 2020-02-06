@@ -1,7 +1,9 @@
 # Path Algorithms
-- > Path finding algorithms visualiser with Windows Forms
-- > Step by step traversal.
 
+- Path finding algorithms visualiser with Windows Forms
+- Step by step traversal.
+
+# Algorithms
 - [x] Breadth-First search
 - [x] Depth-First search
 - [ ] Dijkstra's Algorithm
