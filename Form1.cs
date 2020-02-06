@@ -29,7 +29,6 @@ namespace PathAlgorithms
         {
             this.Close();
         }
-
        
         void prepareBoard()
         {
@@ -86,7 +85,6 @@ namespace PathAlgorithms
                 {
                     if (board[i, j].Style.BackColor == Color.Red)
                     {
-                        // [DEBUG] MessageBox.Show(i.ToString() + " : " + j.ToString());
                         xWalls.Add(i);
                         yWalls.Add(j);
                     }
@@ -111,7 +109,7 @@ namespace PathAlgorithms
             int iterator = 0;
             foreach (Tuple<int, int> x in path)
             {
-                wait(1);
+                wait(70);
                 int xx = x.Item1;
                 int yy = x.Item2;
                 if (clr == true)
@@ -183,15 +181,14 @@ namespace PathAlgorithms
             List<int> yWalls = new List<int>();
 
             Tuple<List<int>, List<int>> walls = BuildWalls();  // calls the BuildWalls method
-
+            
             xWalls = walls.Item1;
             yWalls = walls.Item2;
                             // (sX,Sy,eX,eY, row,col)
             DFS dfs = new DFS(startX, startY, endX, endY, 19, 20, xWalls, yWalls); // create DFS object
 
             List<Tuple<int, int>> path = dfs.get_DFS_path();  // run DFS get the cells traversed in BFS order
-            //MessageBox.Show(path.Count.ToString());
-
+            
             ColorTheBoard(path,false); // colors the board
         }
 
