@@ -1,5 +1,6 @@
-# PathAlgorithms
-Path finding algorithms visualiser with Windows Forms
+# Path Algorithms
+- > Path finding algorithms visualiser with Windows Forms
+- > Step by step traversal.
 
 - [x] Breadth-First search
 - [x] Depth-First search
