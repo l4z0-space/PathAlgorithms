@@ -1,6 +1,6 @@
 # Path Algorithms
 
-- Path finding algorithms visualiser with Windows Forms
+- Path finding algorithms visualiser with Windows Forms.
 - Step by step traversal.
 
 # Algorithms
