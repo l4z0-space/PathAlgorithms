@@ -13,3 +13,8 @@ Path finding algorithms visualiser with Windows Forms
 
 
 ![alt text](https://github.com/l4z0-space/PathAlgorithms/blob/master/img/PathPlan.PNG)
+
+
+#                              Sample Screenshot after BFS execution
+
+![bfs](https://github.com/l4z0-space/PathAlgorithms/blob/master/img/progSC.PNG)
