@@ -76,11 +76,11 @@ namespace PathAlgorithms
             toReturn.Add(toAppend);
             if (currX == endX && currY == endY)
             {
-                MessageBox.Show(currentCell.Item3.ToString() + " steps"); // number of steps
+                //MessageBox.Show(currentCell.Item3.ToString() + " steps"); // number of steps
                 return;
             }
 
-            for(int i = 0; i < 8; i++)  // explore the neighbour cellsC:\Users\Lazaron Shyta\source\repos\PathAlgorithms\DFS.cs
+            for(int i = 0; i < 8; i++)  // explore the neighbour cells
             {
                 int nextX = currX + d1[i];
                 int nextY = currY + d2[i];

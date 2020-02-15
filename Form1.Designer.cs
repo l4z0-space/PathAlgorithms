@@ -29,11 +29,21 @@
         private void InitializeComponent()
         {
             this.upPanel = new System.Windows.Forms.Panel();
+            this.pathCount = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.endLISTy = new System.Windows.Forms.ListBox();
+            this.endLISTx = new System.Windows.Forms.ListBox();
+            this.startLISTy = new System.Windows.Forms.ListBox();
+            this.startLISTx = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txts = new System.Windows.Forms.Label();
+            this.TXT = new System.Windows.Forms.Label();
+            this.select = new System.Windows.Forms.Button();
             this.clear = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
             this.runBFS = new System.Windows.Forms.Button();
             this.runDFS = new System.Windows.Forms.Button();
-            this.select = new System.Windows.Forms.Button();
             this.board = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,7 +65,6 @@
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TXT = new System.Windows.Forms.Label();
             this.upPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.board)).BeginInit();
             this.SuspendLayout();
@@ -63,6 +72,15 @@
             // upPanel
             // 
             this.upPanel.BackColor = System.Drawing.SystemColors.InfoText;
+            this.upPanel.Controls.Add(this.pathCount);
+            this.upPanel.Controls.Add(this.button1);
+            this.upPanel.Controls.Add(this.label2);
+            this.upPanel.Controls.Add(this.endLISTy);
+            this.upPanel.Controls.Add(this.endLISTx);
+            this.upPanel.Controls.Add(this.startLISTy);
+            this.upPanel.Controls.Add(this.startLISTx);
+            this.upPanel.Controls.Add(this.label1);
+            this.upPanel.Controls.Add(this.txts);
             this.upPanel.Controls.Add(this.TXT);
             this.upPanel.Controls.Add(this.select);
             this.upPanel.Controls.Add(this.clear);
@@ -74,11 +92,218 @@
             this.upPanel.Size = new System.Drawing.Size(214, 699);
             this.upPanel.TabIndex = 0;
             // 
+            // pathCount
+            // 
+            this.pathCount.BackColor = System.Drawing.Color.Black;
+            this.pathCount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.pathCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.pathCount.ForeColor = System.Drawing.Color.DarkGreen;
+            this.pathCount.Location = new System.Drawing.Point(21, 656);
+            this.pathCount.Name = "pathCount";
+            this.pathCount.Size = new System.Drawing.Size(173, 23);
+            this.pathCount.TabIndex = 21;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.FlatAppearance.BorderSize = 3;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.ForeColor = System.Drawing.Color.Orange;
+            this.button1.Location = new System.Drawing.Point(21, 601);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(173, 37);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "select";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.ForeColor = System.Drawing.Color.Orange;
+            this.label2.Location = new System.Drawing.Point(6, 441);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(196, 25);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Select Coordinates";
+            // 
+            // endLISTy
+            // 
+            this.endLISTy.BackColor = System.Drawing.Color.Black;
+            this.endLISTy.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.endLISTy.ForeColor = System.Drawing.Color.Orange;
+            this.endLISTy.FormattingEnabled = true;
+            this.endLISTy.ItemHeight = 16;
+            this.endLISTy.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18"});
+            this.endLISTy.Location = new System.Drawing.Point(148, 559);
+            this.endLISTy.Name = "endLISTy";
+            this.endLISTy.Size = new System.Drawing.Size(46, 32);
+            this.endLISTy.TabIndex = 18;
+            // 
+            // endLISTx
+            // 
+            this.endLISTx.BackColor = System.Drawing.Color.Black;
+            this.endLISTx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.endLISTx.ForeColor = System.Drawing.Color.Orange;
+            this.endLISTx.FormattingEnabled = true;
+            this.endLISTx.ItemHeight = 16;
+            this.endLISTx.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18"});
+            this.endLISTx.Location = new System.Drawing.Point(91, 559);
+            this.endLISTx.Name = "endLISTx";
+            this.endLISTx.Size = new System.Drawing.Size(46, 32);
+            this.endLISTx.TabIndex = 17;
+            // 
+            // startLISTy
+            // 
+            this.startLISTy.BackColor = System.Drawing.Color.Black;
+            this.startLISTy.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.startLISTy.ForeColor = System.Drawing.Color.Orange;
+            this.startLISTy.FormattingEnabled = true;
+            this.startLISTy.ItemHeight = 16;
+            this.startLISTy.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18"});
+            this.startLISTy.Location = new System.Drawing.Point(148, 482);
+            this.startLISTy.Name = "startLISTy";
+            this.startLISTy.Size = new System.Drawing.Size(46, 32);
+            this.startLISTy.TabIndex = 16;
+            // 
+            // startLISTx
+            // 
+            this.startLISTx.BackColor = System.Drawing.Color.Black;
+            this.startLISTx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.startLISTx.ForeColor = System.Drawing.Color.Orange;
+            this.startLISTx.FormattingEnabled = true;
+            this.startLISTx.ItemHeight = 16;
+            this.startLISTx.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18"});
+            this.startLISTx.Location = new System.Drawing.Point(91, 482);
+            this.startLISTx.Name = "startLISTx";
+            this.startLISTx.Size = new System.Drawing.Size(46, 32);
+            this.startLISTx.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.Orange;
+            this.label1.Location = new System.Drawing.Point(31, 559);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 20);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "end:\r\n";
+            // 
+            // txts
+            // 
+            this.txts.AutoSize = true;
+            this.txts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txts.ForeColor = System.Drawing.Color.Orange;
+            this.txts.Location = new System.Drawing.Point(31, 482);
+            this.txts.Name = "txts";
+            this.txts.Size = new System.Drawing.Size(54, 20);
+            this.txts.TabIndex = 13;
+            this.txts.Text = "start:";
+            // 
+            // TXT
+            // 
+            this.TXT.AutoSize = true;
+            this.TXT.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.TXT.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TXT.ForeColor = System.Drawing.Color.Orange;
+            this.TXT.Location = new System.Drawing.Point(29, 215);
+            this.TXT.Name = "TXT";
+            this.TXT.Size = new System.Drawing.Size(160, 32);
+            this.TXT.TabIndex = 5;
+            this.TXT.Text = "Algorithms";
+            // 
+            // select
+            // 
+            this.select.BackColor = System.Drawing.Color.Red;
+            this.select.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.select.Location = new System.Drawing.Point(0, 110);
+            this.select.Name = "select";
+            this.select.Size = new System.Drawing.Size(211, 61);
+            this.select.TabIndex = 2;
+            this.select.Text = "Build Wall";
+            this.select.UseVisualStyleBackColor = false;
+            this.select.Click += new System.EventHandler(this.Select_Click);
+            // 
             // clear
             // 
             this.clear.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.clear.Location = new System.Drawing.Point(3, 113);
+            this.clear.Location = new System.Drawing.Point(0, 43);
             this.clear.Name = "clear";
             this.clear.Size = new System.Drawing.Size(211, 61);
             this.clear.TabIndex = 4;
@@ -103,9 +328,9 @@
             // 
             this.runBFS.BackColor = System.Drawing.Color.Yellow;
             this.runBFS.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.runBFS.Location = new System.Drawing.Point(2, 362);
+            this.runBFS.Location = new System.Drawing.Point(3, 260);
             this.runBFS.Name = "runBFS";
-            this.runBFS.Size = new System.Drawing.Size(211, 78);
+            this.runBFS.Size = new System.Drawing.Size(210, 78);
             this.runBFS.TabIndex = 1;
             this.runBFS.Text = "RUN BFS";
             this.runBFS.UseVisualStyleBackColor = false;
@@ -115,25 +340,13 @@
             // 
             this.runDFS.BackColor = System.Drawing.Color.Yellow;
             this.runDFS.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.runDFS.Location = new System.Drawing.Point(2, 443);
+            this.runDFS.Location = new System.Drawing.Point(3, 341);
             this.runDFS.Name = "runDFS";
             this.runDFS.Size = new System.Drawing.Size(211, 78);
             this.runDFS.TabIndex = 1;
             this.runDFS.Text = "RUN DFS";
             this.runDFS.UseVisualStyleBackColor = false;
             this.runDFS.Click += new System.EventHandler(this.RunDFS_Click);
-            // 
-            // select
-            // 
-            this.select.BackColor = System.Drawing.Color.Red;
-            this.select.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.select.Location = new System.Drawing.Point(3, 180);
-            this.select.Name = "select";
-            this.select.Size = new System.Drawing.Size(214, 61);
-            this.select.TabIndex = 2;
-            this.select.Text = "Build Wall";
-            this.select.UseVisualStyleBackColor = false;
-            this.select.Click += new System.EventHandler(this.Select_Click);
             // 
             // board
             // 
@@ -312,18 +525,6 @@
             this.Column19.Name = "Column19";
             this.Column19.Width = 125;
             // 
-            // TXT
-            // 
-            this.TXT.AutoSize = true;
-            this.TXT.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.TXT.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TXT.ForeColor = System.Drawing.Color.Orange;
-            this.TXT.Location = new System.Drawing.Point(23, 317);
-            this.TXT.Name = "TXT";
-            this.TXT.Size = new System.Drawing.Size(160, 32);
-            this.TXT.TabIndex = 5;
-            this.TXT.Text = "Algorithms";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -371,6 +572,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         public System.Windows.Forms.DataGridView board;
         private System.Windows.Forms.Label TXT;
+        private System.Windows.Forms.ListBox endLISTy;
+        private System.Windows.Forms.ListBox endLISTx;
+        private System.Windows.Forms.ListBox startLISTy;
+        private System.Windows.Forms.ListBox startLISTx;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label txts;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox pathCount;
     }
 }
 

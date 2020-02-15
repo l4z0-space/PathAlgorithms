@@ -97,7 +97,7 @@ namespace PathAlgorithms
 
                 if (curr.Item1 == endX && curr.Item2 == endY) // if the target found break
                 {
-                    MessageBox.Show(curr.Item3.ToString()+" steps");
+                    //MessageBox.Show(curr.Item3.ToString()+" steps");
                     found = true;
                     break;
                 }

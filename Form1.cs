@@ -16,7 +16,8 @@ namespace PathAlgorithms
         public Form1()
         {
             InitializeComponent();
-           
+            runDFS.Enabled = false;
+            runBFS.Enabled = false;
             prepareBoard();
         }
 
@@ -39,34 +40,8 @@ namespace PathAlgorithms
             clear.Enabled = true;
 
         }
-        void prompt_user()
-        {
-            int height_SZ = board.Rows.Count;
-            int width_SZ = board.Columns.Count;
-            MessageBox.Show("Please select the starting cell...");
-            for (int i = 0; i < width_SZ; i++)
-            {
-                for (int j = 0; j < height_SZ; j++)
-                {
-                    if (board[i, j].Selected)
-                    {
-                        startX = i;startY = j;
-                    }
-                }
-            }
-            MessageBox.Show("Please select the ending cell...");
-            
-            for (int i = 0; i < width_SZ; i++)
-            {
-                for (int j = 0; j < height_SZ; j++)
-                {
-                    if (board[i, j].Selected)
-                    {
-                        endX = i; endY = j;
-                    }
-                }
-            }
-        }
+        
+        
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
@@ -192,6 +167,29 @@ namespace PathAlgorithms
             }
         }
 
+        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // select start and end button
+        private void Button1_Click(object sender, EventArgs e) 
+        {
+            startY = Int32.Parse(startLISTx.SelectedItem.ToString())-1;
+            startX = Int32.Parse(startLISTy.SelectedItem.ToString())-1;
+            endY = Int32.Parse(endLISTx.SelectedItem.ToString())-1;
+            endX = Int32.Parse(endLISTy.SelectedItem.ToString())-1;
+            if(startX==endX && startY == endY)
+            {
+                MessageBox.Show("Please check coordinates...");
+            }
+            else
+            {
+                runBFS.Enabled = true;
+                runDFS.Enabled = true;
+            }
+        }
+
         private void RunBFS_Click(object sender, EventArgs e)
         {
             List<int> xWalls = new List<int>();
@@ -216,6 +214,7 @@ namespace PathAlgorithms
                 MessageBox.Show("Now showing the shortest path...");
                 ColorTheBoard(shortestPath, true);
             }
+            pathCount.Text = (shortestPath.Count()-1).ToString()+ " steps";
 
         }
 
