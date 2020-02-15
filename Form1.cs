@@ -12,17 +12,60 @@ namespace PathAlgorithms
 {
     public partial class Form1 : Form
     {
+       
         public Form1()
         {
             InitializeComponent();
+           
             prepareBoard();
         }
 
-        int startX=2, startY=2, endX=16, endY=16;
+        int startX, startY, endX, endY;
 
+
+        void disableButtons()
+        {
+            runBFS.Enabled = false;
+            runDFS.Enabled = false;
+            select.Enabled = false;
+            clear.Enabled = false;
+        }
+
+        void enableButtons()
+        {
+            runBFS.Enabled = true;
+            runDFS.Enabled = true;
+            select.Enabled = true;
+            clear.Enabled = true;
+
+        }
         void prompt_user()
         {
+            int height_SZ = board.Rows.Count;
+            int width_SZ = board.Columns.Count;
+            MessageBox.Show("Please select the starting cell...");
+            for (int i = 0; i < width_SZ; i++)
+            {
+                for (int j = 0; j < height_SZ; j++)
+                {
+                    if (board[i, j].Selected)
+                    {
+                        startX = i;startY = j;
+                    }
+                }
+            }
+            MessageBox.Show("Please select the ending cell...");
             
+            for (int i = 0; i < width_SZ; i++)
+            {
+                for (int j = 0; j < height_SZ; j++)
+                {
+                    if (board[i, j].Selected)
+                    {
+                        endX = i; endY = j;
+                    }
+                }
+            }
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -78,7 +121,7 @@ namespace PathAlgorithms
             int width_SZ = board.Columns.Count;
             List<int> xWalls = new List<int>();
             List<int> yWalls = new List<int>();
-            
+
             for (int i = 0; i < width_SZ; i++)
             {
                 for (int j = 0; j < height_SZ; j++)
@@ -102,6 +145,7 @@ namespace PathAlgorithms
 
         void ColorTheBoard(List<Tuple<int, int>> path, bool clr)
         {
+            disableButtons();
             var toColor = Color.Yellow;
             var color2 = Color.Green;
            /* If clr is true it means we are coloring the shortest path ( in case of BFS ) */
@@ -127,6 +171,7 @@ namespace PathAlgorithms
 
                 iterator++;
             }
+            clear.Enabled = true; 
         }
 
         private void Select_Click(object sender, EventArgs e)
@@ -205,6 +250,7 @@ namespace PathAlgorithms
                     board[i, j].Value = "";
                 }
             }
+            enableButtons();
         }
     }
 }

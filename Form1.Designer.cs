@@ -30,10 +30,10 @@
         {
             this.upPanel = new System.Windows.Forms.Panel();
             this.clear = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.Button();
+            this.runBFS = new System.Windows.Forms.Button();
             this.runDFS = new System.Windows.Forms.Button();
             this.select = new System.Windows.Forms.Button();
-            this.runBFS = new System.Windows.Forms.Button();
-            this.closeButton = new System.Windows.Forms.Button();
             this.board = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,76 +55,85 @@
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TXT = new System.Windows.Forms.Label();
             this.upPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.board)).BeginInit();
             this.SuspendLayout();
             // 
             // upPanel
             // 
-            this.upPanel.Controls.Add(this.clear);
-            this.upPanel.Controls.Add(this.runDFS);
+            this.upPanel.BackColor = System.Drawing.SystemColors.InfoText;
+            this.upPanel.Controls.Add(this.TXT);
             this.upPanel.Controls.Add(this.select);
-            this.upPanel.Controls.Add(this.runBFS);
+            this.upPanel.Controls.Add(this.clear);
             this.upPanel.Controls.Add(this.closeButton);
-            this.upPanel.Location = new System.Drawing.Point(-1, 0);
+            this.upPanel.Controls.Add(this.runBFS);
+            this.upPanel.Controls.Add(this.runDFS);
+            this.upPanel.Location = new System.Drawing.Point(858, 1);
             this.upPanel.Name = "upPanel";
-            this.upPanel.Size = new System.Drawing.Size(730, 49);
+            this.upPanel.Size = new System.Drawing.Size(214, 699);
             this.upPanel.TabIndex = 0;
             // 
             // clear
             // 
             this.clear.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.clear.Location = new System.Drawing.Point(13, 0);
+            this.clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.clear.Location = new System.Drawing.Point(3, 113);
             this.clear.Name = "clear";
-            this.clear.Size = new System.Drawing.Size(79, 46);
+            this.clear.Size = new System.Drawing.Size(211, 61);
             this.clear.TabIndex = 4;
             this.clear.Text = "CLEAR";
             this.clear.UseVisualStyleBackColor = false;
             this.clear.Click += new System.EventHandler(this.Clear_Click);
             // 
+            // closeButton
+            // 
+            this.closeButton.FlatAppearance.BorderSize = 0;
+            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton.ForeColor = System.Drawing.Color.Red;
+            this.closeButton.Location = new System.Drawing.Point(169, 3);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(44, 45);
+            this.closeButton.TabIndex = 0;
+            this.closeButton.Text = "x";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
+            // 
+            // runBFS
+            // 
+            this.runBFS.BackColor = System.Drawing.Color.Yellow;
+            this.runBFS.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.runBFS.Location = new System.Drawing.Point(2, 362);
+            this.runBFS.Name = "runBFS";
+            this.runBFS.Size = new System.Drawing.Size(211, 78);
+            this.runBFS.TabIndex = 1;
+            this.runBFS.Text = "RUN BFS";
+            this.runBFS.UseVisualStyleBackColor = false;
+            this.runBFS.Click += new System.EventHandler(this.RunBFS_Click);
+            // 
             // runDFS
             // 
-            this.runDFS.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.runDFS.Location = new System.Drawing.Point(493, 0);
+            this.runDFS.BackColor = System.Drawing.Color.Yellow;
+            this.runDFS.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.runDFS.Location = new System.Drawing.Point(2, 443);
             this.runDFS.Name = "runDFS";
-            this.runDFS.Size = new System.Drawing.Size(79, 46);
-            this.runDFS.TabIndex = 3;
-            this.runDFS.Text = "DFS";
+            this.runDFS.Size = new System.Drawing.Size(211, 78);
+            this.runDFS.TabIndex = 1;
+            this.runDFS.Text = "RUN DFS";
             this.runDFS.UseVisualStyleBackColor = false;
             this.runDFS.Click += new System.EventHandler(this.RunDFS_Click);
             // 
             // select
             // 
-            this.select.Location = new System.Drawing.Point(193, 0);
+            this.select.BackColor = System.Drawing.Color.Red;
+            this.select.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.select.Location = new System.Drawing.Point(3, 180);
             this.select.Name = "select";
-            this.select.Size = new System.Drawing.Size(87, 46);
+            this.select.Size = new System.Drawing.Size(214, 61);
             this.select.TabIndex = 2;
             this.select.Text = "Build Wall";
-            this.select.UseVisualStyleBackColor = true;
+            this.select.UseVisualStyleBackColor = false;
             this.select.Click += new System.EventHandler(this.Select_Click);
-            // 
-            // runBFS
-            // 
-            this.runBFS.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.runBFS.Location = new System.Drawing.Point(413, 0);
-            this.runBFS.Name = "runBFS";
-            this.runBFS.Size = new System.Drawing.Size(79, 46);
-            this.runBFS.TabIndex = 1;
-            this.runBFS.Text = "BFS";
-            this.runBFS.UseVisualStyleBackColor = false;
-            this.runBFS.Click += new System.EventHandler(this.RunBFS_Click);
-            // 
-            // closeButton
-            // 
-            this.closeButton.FlatAppearance.BorderSize = 0;
-            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeButton.Location = new System.Drawing.Point(655, 1);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(72, 45);
-            this.closeButton.TabIndex = 0;
-            this.closeButton.Text = "x";
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // board
             // 
@@ -155,12 +164,12 @@
             this.Column17,
             this.Column18,
             this.Column19});
-            this.board.Location = new System.Drawing.Point(-1, 52);
+            this.board.Location = new System.Drawing.Point(1, 1);
             this.board.Name = "board";
             this.board.RowHeadersVisible = false;
             this.board.RowHeadersWidth = 51;
             this.board.RowTemplate.Height = 24;
-            this.board.Size = new System.Drawing.Size(730, 600);
+            this.board.Size = new System.Drawing.Size(859, 699);
             this.board.TabIndex = 1;
             // 
             // Column1
@@ -303,17 +312,30 @@
             this.Column19.Name = "Column19";
             this.Column19.Width = 125;
             // 
+            // TXT
+            // 
+            this.TXT.AutoSize = true;
+            this.TXT.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.TXT.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TXT.ForeColor = System.Drawing.Color.Orange;
+            this.TXT.Location = new System.Drawing.Point(23, 317);
+            this.TXT.Name = "TXT";
+            this.TXT.Size = new System.Drawing.Size(160, 32);
+            this.TXT.TabIndex = 5;
+            this.TXT.Text = "Algorithms";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 651);
+            this.ClientSize = new System.Drawing.Size(1072, 702);
             this.Controls.Add(this.board);
             this.Controls.Add(this.upPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
             this.upPanel.ResumeLayout(false);
+            this.upPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.board)).EndInit();
             this.ResumeLayout(false);
 
@@ -323,7 +345,6 @@
 
         private System.Windows.Forms.Panel upPanel;
         private System.Windows.Forms.Button closeButton;
-        private System.Windows.Forms.DataGridView board;
         private System.Windows.Forms.Button runBFS;
         private System.Windows.Forms.Button select;
         private System.Windows.Forms.Button runDFS;
@@ -348,6 +369,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
+        public System.Windows.Forms.DataGridView board;
+        private System.Windows.Forms.Label TXT;
     }
 }
 
