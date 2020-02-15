@@ -175,18 +175,27 @@ namespace PathAlgorithms
         // select start and end button
         private void Button1_Click(object sender, EventArgs e) 
         {
-            startY = Int32.Parse(startLISTx.SelectedItem.ToString())-1;
-            startX = Int32.Parse(startLISTy.SelectedItem.ToString())-1;
-            endY = Int32.Parse(endLISTx.SelectedItem.ToString())-1;
-            endX = Int32.Parse(endLISTy.SelectedItem.ToString())-1;
-            if(startX==endX && startY == endY)
+            try
             {
-                MessageBox.Show("Please check coordinates...");
-            }
-            else
+
+                startY = Int32.Parse(startLISTx.SelectedItem.ToString()) - 1;
+                startX = Int32.Parse(startLISTy.SelectedItem.ToString()) - 1;
+                endY = Int32.Parse(endLISTx.SelectedItem.ToString()) - 1;
+                endX = Int32.Parse(endLISTy.SelectedItem.ToString()) - 1;
+                if (startX == endX && startY == endY)
+                {
+                    MessageBox.Show("Please check coordinates...");
+                }
+                else
+                {
+                    runBFS.Enabled = true;
+                    runDFS.Enabled = true;
+                    button1.Enabled = false;
+                }
+                
+            }catch(Exception a)
             {
-                runBFS.Enabled = true;
-                runDFS.Enabled = true;
+                MessageBox.Show("Please check coordinates..."); 
             }
         }
 
@@ -238,6 +247,7 @@ namespace PathAlgorithms
 
         private void Clear_Click(object sender, EventArgs e)
         {
+            button1.Enabled = true;
             int height_SZ = board.Rows.Count;
             int width_SZ = board.Columns.Count;
 
