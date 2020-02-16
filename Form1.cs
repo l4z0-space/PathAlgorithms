@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PathAlgorithms
@@ -18,6 +14,7 @@ namespace PathAlgorithms
             InitializeComponent();
             runDFS.Enabled = false;
             runBFS.Enabled = false;
+            select.Enabled = false;
             prepareBoard();
         }
 
@@ -30,6 +27,7 @@ namespace PathAlgorithms
             runDFS.Enabled = false;
             select.Enabled = false;
             clear.Enabled = false;
+            button1.Enabled = false;
         }
 
         void enableButtons()
@@ -38,6 +36,7 @@ namespace PathAlgorithms
             runDFS.Enabled = true;
             select.Enabled = true;
             clear.Enabled = true;
+            button1.Enabled = true;
 
         }
         
@@ -121,7 +120,7 @@ namespace PathAlgorithms
         void ColorTheBoard(List<Tuple<int, int>> path, bool clr)
         {
             disableButtons();
-            var toColor = Color.Yellow;
+            var toColor = Color.Orange;
             var color2 = Color.Green;
            /* If clr is true it means we are coloring the shortest path ( in case of BFS ) */
             if (clr == true) toColor = color2;
@@ -146,7 +145,8 @@ namespace PathAlgorithms
 
                 iterator++;
             }
-            clear.Enabled = true; 
+            clear.Enabled = true;
+            button1.Enabled = true;
         }
 
         private void Select_Click(object sender, EventArgs e)
@@ -159,7 +159,7 @@ namespace PathAlgorithms
             {
                 for (int j = 0; j < height_SZ; j++)
                 {
-                    if (board[i, j].Selected) {
+                    if (board[i, j].Selected && board[i,j].Style.BackColor!= Color.Brown) {
                         board[i, j].Selected = false;
                         board[i, j].Style.BackColor = Color.Red;
                     }
@@ -188,12 +188,22 @@ namespace PathAlgorithms
                 }
                 else
                 {
-                    runBFS.Enabled = true;
-                    runDFS.Enabled = true;
+                    board[startX, startY].Style.BackColor = Color.Brown;
+                    board[startX, startY].Value = "start";
+
+                    board[endX, endY].Style.BackColor = Color.Brown;
+                    board[endX, endY].Value = "end";
+
+                    enableButtons();
                     button1.Enabled = false;
+                    startLISTx.ClearSelected();
+                    startLISTy.ClearSelected();
+                    endLISTx.ClearSelected();
+                    endLISTy.ClearSelected();
+
                 }
                 
-            }catch(Exception a)
+            }catch(Exception )
             {
                 MessageBox.Show("Please check coordinates..."); 
             }
@@ -217,7 +227,10 @@ namespace PathAlgorithms
 
             ColorTheBoard(path, false); // colors the board
 
-            if (shortestPath.Count() == 0) { MessageBox.Show("No path for the selected cells..."); }
+            if (shortestPath.Count() == 0) {
+                MessageBox.Show("No path for the selected cells...");
+                clearBoard();
+            }
             else
             {
                 MessageBox.Show("Now showing the shortest path...");
@@ -245,7 +258,7 @@ namespace PathAlgorithms
             ColorTheBoard(path,false); // colors the board
         }
 
-        private void Clear_Click(object sender, EventArgs e)
+        void clearBoard()
         {
             button1.Enabled = true;
             int height_SZ = board.Rows.Count;
@@ -259,7 +272,12 @@ namespace PathAlgorithms
                     board[i, j].Value = "";
                 }
             }
-            enableButtons();
+            // enableButtons();
+
+        }
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            clearBoard();
         }
     }
 }
