@@ -16,6 +16,8 @@ namespace PathAlgorithms
             runBFS.Enabled = false;
             select.Enabled = false;
             prepareBoard();
+
+            
         }
 
         int startX, startY, endX, endY;
@@ -125,14 +127,18 @@ namespace PathAlgorithms
            /* If clr is true it means we are coloring the shortest path ( in case of BFS ) */
             if (clr == true) toColor = color2;
             int iterator = 0;
-            foreach (Tuple<int, int> x in path)
+
+            for (int currIT= 0; currIT < path.Count;currIT++ )
             {
+                Tuple<int, int> x = path[currIT];
                 wait(70);
                 int xx = x.Item1;
                 int yy = x.Item2;
                 if (clr == true)
                 {
+                    
                     board[xx, yy].Value = iterator; //If shortest path then mark current steps
+                    board[xx, yy].Style.BackColor = toColor;
                 }
 
                 if (xx == endX && yy == endY)
@@ -141,8 +147,20 @@ namespace PathAlgorithms
                     board[xx, yy].Value = "ok!";
                     break;
                 }
-                else board[xx, yy].Style.BackColor = toColor;
-
+                else
+                {
+                    
+                    if (currIT > 0 ) // color previous (not yellow)
+                    {
+                        Tuple<int, int> prevX = path[currIT - 1];
+                        board[prevX.Item1, prevX.Item2].Style.BackColor = toColor;
+                    }
+                    if(board[xx, yy].Style.BackColor != toColor && clr==false) // if not colored then color it yellow (current)
+                    {
+                        board[xx, yy].Style.BackColor = Color.Yellow;
+                    }
+                    
+                }
                 iterator++;
             }
             clear.Enabled = true;
