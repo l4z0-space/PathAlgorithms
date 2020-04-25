@@ -42,9 +42,6 @@ namespace PathAlgorithms
         List<Tuple<int, int>> toReturn = new List<Tuple<int, int>>();
         List<Tuple<int, int>> shortestPath = new List<Tuple<int, int>>();
         Dictionary<Tuple<int, int>, Tuple<int, int>> Path = new Dictionary<Tuple<int,int>, Tuple<int,int>>();
-
-
-
         #endregion
 
 

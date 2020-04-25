@@ -270,8 +270,8 @@ namespace PathAlgorithms
             yWalls = walls.Item2;
                             // (sX,Sy,eX,eY, row,col)
             DFS dfs = new DFS(startX, startY, endX, endY, 19, 20, xWalls, yWalls); // create DFS object
-
-            List<Tuple<int, int>> path = dfs.get_DFS_path();  // run DFS get the cells traversed in BFS order
+            Astar astar = new Astar(startX, startY, endX, endY, 19, 20, xWalls, yWalls);
+            List<Tuple<int, int>> path = astar.get_Astar_path();  // run DFS get the cells traversed in BFS order
             
             ColorTheBoard(path,false); // colors the board
         }
