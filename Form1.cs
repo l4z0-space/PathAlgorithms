@@ -14,6 +14,7 @@ namespace PathAlgorithms
             InitializeComponent();
             runDFS.Enabled = false;
             runBFS.Enabled = false;
+            runAstar.Enabled = false;
             select.Enabled = false;
             prepareBoard();
 
@@ -27,6 +28,7 @@ namespace PathAlgorithms
         {
             runBFS.Enabled = false;
             runDFS.Enabled = false;
+            runAstar.Enabled = false;
             select.Enabled = false;
             clear.Enabled = false;
             button1.Enabled = false;
@@ -36,10 +38,10 @@ namespace PathAlgorithms
         {
             runBFS.Enabled = true;
             runDFS.Enabled = true;
+            runAstar.Enabled = true;
             select.Enabled = true;
             clear.Enabled = true;
             button1.Enabled = true;
-
         }
         
         
@@ -258,6 +260,30 @@ namespace PathAlgorithms
 
         }
 
+        private void Label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RunAstar_Click(object sender, EventArgs e)
+        {
+            List<int> xWalls = new List<int>();
+            List<int> yWalls = new List<int>();
+
+            Tuple<List<int>, List<int>> walls = BuildWalls();  // calls the BuildWalls method
+
+            xWalls = walls.Item1;
+            yWalls = walls.Item2;
+            // (sX,Sy,eX,eY, row,col)
+            Astar astar = new Astar(startX, startY, endX, endY, 19, 20, xWalls, yWalls);
+            List<Tuple<int, int>> path = astar.get_Astar_path();  // run DFS get the cells traversed in BFS order
+
+            ColorTheBoard(path, false); // colors the board
+
+            pathCount.Text = (path.Count() - 1).ToString() + " steps";
+
+        }
+
         private void RunDFS_Click(object sender, EventArgs e)
         {
 
@@ -270,10 +296,12 @@ namespace PathAlgorithms
             yWalls = walls.Item2;
                             // (sX,Sy,eX,eY, row,col)
             DFS dfs = new DFS(startX, startY, endX, endY, 19, 20, xWalls, yWalls); // create DFS object
-            Astar astar = new Astar(startX, startY, endX, endY, 19, 20, xWalls, yWalls);
-            List<Tuple<int, int>> path = astar.get_Astar_path();  // run DFS get the cells traversed in BFS order
+   
+            List<Tuple<int, int>> path = dfs.get_DFS_path();  // run DFS get the cells traversed in BFS order
             
             ColorTheBoard(path,false); // colors the board
+
+            pathCount.Text = (path.Count() - 1).ToString() + " steps";
         }
 
         void clearBoard()

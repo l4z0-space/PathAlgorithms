@@ -17,3 +17,4 @@ C:\Users\Lazaron Shyta\Desktop\devProjects\PathAlgorithms\obj\Debug\PathAlgorith
 C:\Users\Lazaron Shyta\Desktop\devProjects\PathAlgorithms\obj\Debug\PathAlgorithms.csproj.CoreCompileInputs.cache
 C:\Users\Lazaron Shyta\Desktop\devProjects\PathAlgorithms\obj\Debug\PathAlgorithms.exe
 C:\Users\Lazaron Shyta\Desktop\devProjects\PathAlgorithms\obj\Debug\PathAlgorithms.pdb
+C:\Users\Lazaron Shyta\Desktop\devProjects\PathAlgorithms\bin\Debug\PathAlgorithms.pdb
