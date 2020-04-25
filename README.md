@@ -7,8 +7,7 @@
 - [x] Breadth-First search
 - [x] Depth-First search
 - [ ] Dijkstra's Algorithm
-- [ ] Greedy Best First Search
-- [ ] A* search
+- [ ] A* search 
 
 
 #                              Function flow
@@ -18,6 +17,11 @@
 ![alt text](https://github.com/l4z0-space/PathAlgorithms/blob/master/img/PathPlan.PNG)
 
 
-#                              Sample Screenshot after BFS execution
+##                             Sample Screenshot before Algorithm execution
 
-![bfs](https://github.com/l4z0-space/PathAlgorithms/blob/master/img/progSC.PNG)
+![bfsBefore](https://github.com/l4z0-space/PathAlgorithms/blob/master/img/beforeRun.PNG)
+
+
+##                             Sample Screenshot after Algorithm (BFS) execution
+
+![bfsAfter](https://github.com/l4z0-space/PathAlgorithms/blob/master/img/afterRun.PNG)
