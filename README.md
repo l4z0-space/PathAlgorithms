@@ -4,9 +4,9 @@
 - Step by step traversal.
 
 # Algorithms
-- [x] Breadth-First search
-- [x] Depth-First search
-- [x] A* search 
+- ### Breadth-First search
+- ### Depth-First search
+- ### A* search 
 
 
 #                              Function flow
