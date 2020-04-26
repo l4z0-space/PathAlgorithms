@@ -6,8 +6,7 @@
 # Algorithms
 - [x] Breadth-First search
 - [x] Depth-First search
-- [ ] Dijkstra's Algorithm
-- [ ] A* search 
+- [x] A* search 
 
 
 #                              Function flow
@@ -25,3 +24,11 @@
 ##                             Sample Screenshot after Algorithm (BFS) execution
 
 ![bfsAfter](https://github.com/l4z0-space/PathAlgorithms/blob/master/img/afterRun.PNG)
+
+### Legend
+
+Color | Meaning
+------------ | -------------
+Red| Wall Cell
+Orange | Explored Cell
+Green | Shortest Path
