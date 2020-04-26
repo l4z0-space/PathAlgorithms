@@ -23,7 +23,6 @@ namespace PathAlgorithms
 
         int startX, startY, endX, endY;
 
-
         void disableButtons()
         {
             runBFS.Enabled = false;
@@ -44,8 +43,6 @@ namespace PathAlgorithms
             button1.Enabled = true;
         }
         
-        
-
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -91,7 +88,6 @@ namespace PathAlgorithms
             }
         }
 
-
         Tuple<List<int>,List<int>> BuildWalls()
         {
 
@@ -118,8 +114,6 @@ namespace PathAlgorithms
             }
             return Tuple.Create(xWalls, yWalls);
         }
-
-        
 
         void ColorTheBoard(List<Tuple<int, int>> path, bool clr)
         {
@@ -160,6 +154,7 @@ namespace PathAlgorithms
                     if(board[xx, yy].Style.BackColor != toColor && clr==false) // if not colored then color it yellow (current)
                     {
                         board[xx, yy].Style.BackColor = Color.Yellow;
+                        //board[xx, yy].Value = iterator;
                     }
                     
                 }
@@ -186,12 +181,6 @@ namespace PathAlgorithms
                 }
             }
         }
-
-        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         // select start and end button
         private void Button1_Click(object sender, EventArgs e) 
         {
@@ -260,11 +249,6 @@ namespace PathAlgorithms
 
         }
 
-        private void Label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void RunAstar_Click(object sender, EventArgs e)
         {
             List<int> xWalls = new List<int>();
@@ -274,13 +258,25 @@ namespace PathAlgorithms
 
             xWalls = walls.Item1;
             yWalls = walls.Item2;
-            // (sX,Sy,eX,eY, row,col)
-            Astar astar = new Astar(startX, startY, endX, endY, 19, 20, xWalls, yWalls);
-            List<Tuple<int, int>> path = astar.get_Astar_path();  // run DFS get the cells traversed in BFS order
-
+           
+            Astar astar = new Astar(startX, startY, endX, endY, 19, 20, xWalls, yWalls); // create A* object
+            Tuple<List<Tuple<int, int>>, List<Tuple<int, int>>> paths = astar.get_Astar_path(); // run A* and get the paths (traversal and shortest)
+            List<Tuple<int, int>> path = paths.Item1;
+            List<Tuple<int, int>> shortestPath = paths.Item2;
+  
             ColorTheBoard(path, false); // colors the board
 
-            pathCount.Text = (path.Count() - 1).ToString() + " steps";
+            if (shortestPath.Count() == 0)
+            {
+                MessageBox.Show("No path for the selected cells...");
+                clearBoard();
+            }
+            else
+            {
+                MessageBox.Show("Now showing the shortest path...");
+                ColorTheBoard(shortestPath, true);
+            }
+            pathCount.Text = (shortestPath.Count() - 1).ToString() + " steps";
 
         }
 
@@ -321,6 +317,7 @@ namespace PathAlgorithms
             // enableButtons();
 
         }
+
         private void Clear_Click(object sender, EventArgs e)
         {
             clearBoard();

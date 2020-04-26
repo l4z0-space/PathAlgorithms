@@ -70,7 +70,7 @@ namespace PathAlgorithms
 
             if (current.Item1 == startX && current.Item2 == startY)
                 return;
-            else prepare_shortest_Path(Path[current]); ;
+            else prepare_shortest_Path(Path[current]); 
         }
 
         public List<Tuple<int, int>> get_shortest_Path()

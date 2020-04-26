@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.upPanel = new System.Windows.Forms.Panel();
+            this.runAstar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -69,7 +70,6 @@
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.runAstar = new System.Windows.Forms.Button();
             this.upPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.board)).BeginInit();
             this.SuspendLayout();
@@ -101,6 +101,21 @@
             this.upPanel.Name = "upPanel";
             this.upPanel.Size = new System.Drawing.Size(215, 699);
             this.upPanel.TabIndex = 0;
+            // 
+            // runAstar
+            // 
+            this.runAstar.BackColor = System.Drawing.Color.Black;
+            this.runAstar.FlatAppearance.BorderSize = 5;
+            this.runAstar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.runAstar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.runAstar.ForeColor = System.Drawing.Color.Orange;
+            this.runAstar.Location = new System.Drawing.Point(3, 369);
+            this.runAstar.Name = "runAstar";
+            this.runAstar.Size = new System.Drawing.Size(208, 58);
+            this.runAstar.TabIndex = 26;
+            this.runAstar.Text = "RUN A*";
+            this.runAstar.UseVisualStyleBackColor = false;
+            this.runAstar.Click += new System.EventHandler(this.RunAstar_Click);
             // 
             // label5
             // 
@@ -141,7 +156,6 @@
             this.label3.Size = new System.Drawing.Size(14, 17);
             this.label3.TabIndex = 22;
             this.label3.Text = "x";
-            this.label3.Click += new System.EventHandler(this.Label3_Click);
             // 
             // pathCount
             // 
@@ -206,8 +220,7 @@
             "16",
             "17",
             "18",
-            "19",
-            "20"});
+            "19"});
             this.endLISTy.Location = new System.Drawing.Point(143, 565);
             this.endLISTy.Name = "endLISTy";
             this.endLISTy.Size = new System.Drawing.Size(46, 32);
@@ -595,21 +608,6 @@
             this.Column19.MinimumWidth = 6;
             this.Column19.Name = "Column19";
             this.Column19.Width = 125;
-            // 
-            // runAstar
-            // 
-            this.runAstar.BackColor = System.Drawing.Color.Black;
-            this.runAstar.FlatAppearance.BorderSize = 5;
-            this.runAstar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.runAstar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.runAstar.ForeColor = System.Drawing.Color.Orange;
-            this.runAstar.Location = new System.Drawing.Point(3, 369);
-            this.runAstar.Name = "runAstar";
-            this.runAstar.Size = new System.Drawing.Size(208, 58);
-            this.runAstar.TabIndex = 26;
-            this.runAstar.Text = "RUN A*";
-            this.runAstar.UseVisualStyleBackColor = false;
-            this.runAstar.Click += new System.EventHandler(this.RunAstar_Click);
             // 
             // Form1
             // 

@@ -39,6 +39,8 @@ namespace PathAlgorithms
 
         int[,] table = new int[50, 50]; // table
         List<Tuple<int, int>> toReturn = new List<Tuple<int, int>>();
+        List<Tuple<int, int>> shortestPath = new List<Tuple<int, int>>();
+        Dictionary<Tuple<int, int>, Tuple<int, int>> Path = new Dictionary<Tuple<int, int>, Tuple<int, int>>();
 
         #endregion
 
@@ -46,11 +48,16 @@ namespace PathAlgorithms
 
         void initialize()
         {
+
+            
+
+
             for (int i = 0; i <= width; i++)
             {
                 for (int j = 0; j <= height; j++)
                 {
                     table[i, j] = 0;// all cells to 0
+                    Path[Tuple.Create(i, j)] = Tuple.Create(i, j);
                 }
             }
 
@@ -78,7 +85,7 @@ namespace PathAlgorithms
             a.setF(b.getF());
             return a;
         }
-
+        bool found = false;
         public void performAstar()
         {
             Node start = new Node(startX, startY);
@@ -86,7 +93,7 @@ namespace PathAlgorithms
 
             List<Node> OpenList = new List<Node>();
             List<Node> ClosedList = new List<Node>();
-            bool found = false;
+            
             OpenList.Add(start);
 
             while(OpenList.Count !=0 && !found)
@@ -132,6 +139,10 @@ namespace PathAlgorithms
                         continue;
                     Node nextNode = new Node(nX, nY); // neighbor
                     Neighbors.Add(nextNode);
+
+                    // Important Check
+                    if ( Path[Tuple.Create(nX, nY)].Item1 == nX && Path[Tuple.Create(nX, nY)].Item2 == nY)
+                        Path[Tuple.Create(nX, nY)] = Tuple.Create(currNode.getX(), currNode.getY());
                 }
 
                 foreach(Node someNode in Neighbors )
@@ -147,33 +158,56 @@ namespace PathAlgorithms
                             break;
                         }
                     }
-                    if (!ok) continue;
-                    // Calculate G,H,F
-                    someNode.setG(currNode.getG() + 1);
-                    someNode.setH(calcH(someNode, target));
-                    someNode.setF(someNode.getG() + someNode.getH());
-
-                    // Check if already in the OpenList
-                    bool InOpenList = false;
-                    foreach(Node openNode in OpenList )
+                    if (ok)
                     {
+                        // Calculate G,H,F
+                        someNode.setG(currNode.getG() + 1);
+                        someNode.setH(calcH(someNode, target));
+                        someNode.setF(someNode.getG() + someNode.getH());
 
-                        // not worthed adding to OpenList
-                        if (openNode == someNode && openNode.getG() < someNode.getG())
+                        // Check if already in the OpenList
+                        bool InOpenList = false;
+                        foreach (Node openNode in OpenList)
                         {
-                            InOpenList = true;
-                            break;
+
+                            // not worthed adding to OpenList
+                            if (openNode == someNode && openNode.getG() < someNode.getG())
+                            {
+                                InOpenList = true;
+                                break;
+                            }
                         }
+                        if (!InOpenList)
+                            OpenList.Add(someNode);
                     }
-                    if (!InOpenList)
-                        OpenList.Add(someNode);
                 }
             }
         }
-        public List<Tuple<int, int>> get_Astar_path()
+
+
+
+
+        public void prepare_shortest_Path(Tuple<int, int> current)
+        {
+            shortestPath.Add(current);
+
+            if (current.Item1 == startX && current.Item2 == startY)
+                return;
+            else prepare_shortest_Path(Path[current]);
+
+        }
+        public List<Tuple<int, int>> get_shortest_Path()
+        {
+            shortestPath.Reverse();
+            /* [DEBUG] MessageBox.Show(shortestPath.Count.ToString()); */
+            return shortestPath;
+        }
+        public Tuple<List<Tuple<int, int>>, List<Tuple<int, int>>> get_Astar_path() 
         {
             performAstar();
-            return toReturn;
+            if (found == true) prepare_shortest_Path(Tuple.Create(endX, endY));
+            return Tuple.Create(toReturn, get_shortest_Path());
+          
         }
     }
 }
