@@ -21,7 +21,7 @@
 ![bfsBefore](https://github.com/l4z0-space/PathAlgorithms/blob/master/img/beforeRun.PNG)
 
 
-##                             Sample Screenshot after Algorithm (BFS) execution
+##                             Sample Screenshot after Algorithm (A*) execution
 
 ![bfsAfter](https://github.com/l4z0-space/PathAlgorithms/blob/master/img/afterRun.PNG)
 
